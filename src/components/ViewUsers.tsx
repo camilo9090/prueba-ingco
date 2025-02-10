@@ -31,7 +31,7 @@ export default function viewUsers() {
                     Agregar Usuario
                 </Link>
 
-      
+
 
             </div>
             <div className=" mt-10 mb-10 font-bold">
@@ -56,33 +56,23 @@ export default function viewUsers() {
                                 className=""
                                 key={users.id}>
 
-
                                 <td className="border-b p-2 text-center">{users.firstName}</td>
                                 <td className="border-b p-2 text-center">{users.lastName}</td>
                                 <td className="border-b p-2 text-center">{users.email}</td>
-
                                 <td className="border-b p-2 text-center">
 
                                     <div className="">
 
                                         <ConfirmationDelete
-
                                             userId={users.id}
                                             onDelete={deleteUser}
                                         />
                                     </div>
-
-
                                 </td>
-
                             </tr>
-
-
                         ))}
 
                     </tbody>
-
-
                 </table>
             </div>
         </div>
