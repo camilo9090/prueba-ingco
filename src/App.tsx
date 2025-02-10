@@ -11,18 +11,22 @@ function App() {
 
   const salida = usersStore((state) => state.fetchUsers)
 
-  useEffect(() => { salida() }, [])
+  useEffect(() => { salida() }, [salida])
   return (
-    <>
-      <BrowserRouter>
+    <div className=" mt-5 ">
+
+      
+        
+        <BrowserRouter>
         <Routes>
           <Route path="/" element={<ViewUsers />} />
-          <Route path="/CreateUSer" element={<CreateUser/>} />
-          
+          <Route path="/CreateUSer" element={<CreateUser />} />
+
 
         </Routes>
       </BrowserRouter>
-    </>
+
+    </div>
   )
 }
 

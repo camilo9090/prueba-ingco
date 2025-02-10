@@ -2,6 +2,7 @@ import { useMemo } from "react"
 import { usersStore } from "../store"
 import ConfirmationDelete from "./ConfirmationDelete";
 import { UserIcon } from "@heroicons/react/24/solid";
+import { Link } from "react-router-dom";
 
 
 
@@ -14,33 +15,35 @@ export default function viewUsers() {
 
     return (
 
-        <div className="container m-5">
+        <div className="">
 
             <div className="max-w-5xl mx-auto">
 
 
                 <p className="font-extrabold text-4xl">Administrar <span className="text-blue-700">Usuarios</span></p>
 
-
-
-                <button className="bg-blue-600 p-3 mt-5 text-white font-extrabold uppercase flex flex-row rounded-lg gap-2 items-center">
+                <Link
+                    to="/CreateUSer"
+                    className="bg-blue-600 inline-flex p-3 mt-5 text-white font-extrabold uppercase  flex-row rounded-lg gap-2 items-center text-center hover:bg-blue-700">
                     <UserIcon
                         height={30}
                     />
                     Agregar Usuario
-                </button>
+                </Link>
+
+      
 
             </div>
             <div className=" mt-10 mb-10 font-bold">
 
-                <table className="w-full max-w-5xl mx-auto">
-                    <thead>
+                <table className="w-full max-w-5xl mx-auto table-auto shadow-md">
+                    <thead className="bg-slate-800">
 
-                        <tr className="bg-blue-400">
-                            <th className="border p-2">Nombre</th>
-                            <th className="border p-2">Apellido</th>
-                            <th className="border p-2">Correo</th>
-                            <th className="border p-2">Acciones</th>
+                        <tr className="bg-blue-600 text-white">
+                            <th className="border-b p-2">Nombre</th>
+                            <th className="border-b p-2">Apellido</th>
+                            <th className="border-b p-2">Correo</th>
+                            <th className="border-b p-2">Acciones</th>
 
                         </tr>
                     </thead>
@@ -54,11 +57,11 @@ export default function viewUsers() {
                                 key={users.id}>
 
 
-                                <td className="border p-2 text-center">{users.firstName}</td>
-                                <td className="border p-2 text-center">{users.lastName}</td>
-                                <td className="border p-2 text-center">{users.email}</td>
+                                <td className="border-b p-2 text-center">{users.firstName}</td>
+                                <td className="border-b p-2 text-center">{users.lastName}</td>
+                                <td className="border-b p-2 text-center">{users.email}</td>
 
-                                <td className="border p-2 text-center">
+                                <td className="border-b p-2 text-center">
 
                                     <div className="">
 
