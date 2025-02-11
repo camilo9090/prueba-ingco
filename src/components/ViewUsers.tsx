@@ -89,6 +89,7 @@ export default function viewUsers() {
 
                 </table>
             </div>
+            <footer className="bg-blue-700 text-center p-5 text-white font-bold">Jhonatan Camilo Uribe-2025</footer>
         </div>
 
 

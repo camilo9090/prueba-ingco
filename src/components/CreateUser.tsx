@@ -2,6 +2,7 @@ import { useState } from "react";
 import { usersStore } from "../store";
 import { useNavigate } from "react-router-dom";
 import Header from "./Header";
+import { toast } from 'react-toastify'
 
 
 
@@ -25,12 +26,17 @@ export default function CreateUser() {
 
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault(); // Evita recargar la página
+    e.preventDefault();
+    if (!formData.firstName.trim() || !formData.lastName.trim() || !formData.email.trim()) {
+      toast.error("Todos los campos son obligatorios");
+      return;
+    }
 
     try {
-      await createUser(formData); // Llamamos a la función de Zustand
-      setFormData({ firstName: "", lastName: "", email: "" }); // Limpiar formulario
+      await createUser(formData);
+      setFormData({ firstName: "", lastName: "", email: "" });
       navigate('/')
+      toast.success('Usuario Registrado')
     } catch (error) {
       console.error("Error al crear usuario:", error);
     }
@@ -38,7 +44,7 @@ export default function CreateUser() {
   return (
 
     <div >
-      <Header/>
+      <Header />
       <div className="flex flex-col max-w-5xl mx-auto gap-4 mt-5">
         <h2 className="font-extrabold text-3xl">Crear Nuevo <span className="text-blue-700">Usuario</span></h2>
 
@@ -94,15 +100,9 @@ export default function CreateUser() {
             type="submit"
             value="Guardar Usuario"
           />
-
-
-
-
         </form>
       </div>
-
-
-
+      <footer className="bg-blue-700 text-center p-5 text-white font-bold mt-30">Jhonatan Camilo Uribe-2025</footer>
     </div>
   )
 }
