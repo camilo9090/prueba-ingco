@@ -1,23 +1,32 @@
-import { useMemo } from "react"
+import { useEffect, useMemo } from "react"
 import { usersStore } from "../store"
 import ConfirmationDelete from "./ConfirmationDelete";
 import { UserIcon } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
+import Header from "./Header";
 
 
 
 export default function viewUsers() {
 
     const usuarios = usersStore(state => state.listUser)
-    const usuariosFilters = useMemo(() => usuarios.filter(salida => salida.status === true), [usuarios])
+    const usuariosFilters = useMemo(() => usuarios.filter(salida => salida.status === true), [usuarios]);
     const deleteUser = usersStore(state => state.deleteUser)
 
+  
 
+    const fetchUsers = usersStore(state => state.fetchUsers);
+
+    useEffect(() => {
+        fetchUsers();
+    }, [fetchUsers]); // Asegura que solo se ejecuta una vez
+    
     return (
 
         <div className="">
+            <Header/>
 
-            <div className="max-w-5xl mx-auto">
+            <div className="max-w-5xl mx-auto mt-5">
 
 
                 <p className="font-extrabold text-4xl">Administrar <span className="text-blue-700">Usuarios</span></p>
@@ -69,10 +78,15 @@ export default function viewUsers() {
                                         />
                                     </div>
                                 </td>
+
                             </tr>
+
+
                         ))}
 
                     </tbody>
+
+
                 </table>
             </div>
         </div>
