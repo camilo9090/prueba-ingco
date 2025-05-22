@@ -46,7 +46,7 @@ export default function ViewUsers() {
   }, [fetchUsers]);
 
   return (
-    <>
+    <div className="relative">
       <Header />
       <div className="max-w-5xl mx-auto mt-5 bg-gray-700 p-10 rounded-lg shadow-md text-center flex justify-center gap-10 items-center">
         <p className="font-bold text-2xl text-white">
@@ -100,6 +100,6 @@ export default function ViewUsers() {
 
      <Footer />
 
-    </>
+    </div>
   );
 }
