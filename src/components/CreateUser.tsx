@@ -69,7 +69,7 @@ export default function CreateUser() {
           className="bg-gray-700 p-8 rounded-2xl shadow-lg space-y-6"
         >
           <h2 className="text-2xl font-bold text-center mb-8 text-white">
-            Crear <span className="text-emerald-400">Usuario</span>
+            Crear Usuario
           </h2>
 
           <input

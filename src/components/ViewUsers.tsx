@@ -23,7 +23,7 @@ export default function ViewUsers() {
       <Header />
       <div className="max-w-5xl mx-auto mt-5 bg-gray-700 p-10 rounded-lg shadow-md text-center flex justify-center gap-10 items-center">
         <p className="font-bold text-2xl text-white">
-          Creación de <span className="text-emerald-400">Usuarios: </span>
+          Creación de Usuarios: 
         </p>
 
         <Link
