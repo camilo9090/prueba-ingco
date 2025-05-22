@@ -31,7 +31,7 @@ export default function ViewUsers() {
 
   const pageCount = Math.ceil(usuariosFilters.length / usersPerPage);
 
-  const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+  const handleChange = (_: React.ChangeEvent<unknown>, value: number) => {
     setPAge(value);
   }
 
@@ -46,7 +46,7 @@ export default function ViewUsers() {
   }, [fetchUsers]);
 
   return (
-    <div className="relative">
+    <div className="">
       <Header />
       <div className="max-w-5xl mx-auto mt-5 bg-gray-700 p-10 rounded-lg shadow-md text-center flex justify-center gap-10 items-center">
         <p className="font-bold text-2xl text-white">
