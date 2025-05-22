@@ -2,7 +2,6 @@
 import ViewUsers from "./components/ViewUsers"
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import CreateUser from "./components/CreateUser"
-import { ToastContainer } from "react-toastify"
 import "react-toastify/ReactToastify.css"
 
 
@@ -10,13 +9,10 @@ import "react-toastify/ReactToastify.css"
 
 function App() {
 
-  
+
   return (
     <>
-
-      
-        
-        <BrowserRouter>
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<ViewUsers />} />
           <Route path="/CreateUSer" element={<CreateUser />} />
@@ -24,7 +20,6 @@ function App() {
 
         </Routes>
       </BrowserRouter>
-      <ToastContainer />
 
     </>
   )

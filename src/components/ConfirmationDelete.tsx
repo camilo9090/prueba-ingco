@@ -3,19 +3,22 @@ import Swal from "sweetalert2";
 import { user } from "../types";
 
 type ConfirmationDeleteProps = {
-  userId: user['id'];
-  onDelete: (id: user['id']) => void;
-}
+  userId: user["id"];
+  onDelete: (id: user["id"]) => void;
+};
 
-export default function ConfirmationDelete({ userId, onDelete }: ConfirmationDeleteProps) {
+export default function ConfirmationDelete({
+  userId,
+  onDelete,
+}: ConfirmationDeleteProps) {
   const handleDelete = () => {
     Swal.fire({
       title: "¿Estás seguro?",
       text: "¡No podrás revertir esto!",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
+      confirmButtonColor: "#f59e0b", 
+      cancelButtonColor: "#ef4444",  
       confirmButtonText: "Sí, eliminar",
       cancelButtonText: "Cancelar",
     }).then((result) => {
@@ -35,7 +38,7 @@ export default function ConfirmationDelete({ userId, onDelete }: ConfirmationDel
   return (
     <button
       onClick={handleDelete}
-      className="bg-red-500 flex flex-row items-center gap-2 text-white p-2 rounded-lg w-full hover:bg-red-600 transition-colors justify-center"
+      className="bg-amber-500 hover:bg-amber-600 text-white flex flex-row items-center gap-2 p-2 rounded-lg w-full transition-colors justify-center"
     >
       <TrashIcon width={20} />
       Eliminar

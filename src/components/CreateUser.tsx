@@ -2,107 +2,136 @@ import { useState } from "react";
 import { usersStore } from "../store";
 import { useNavigate } from "react-router-dom";
 import Header from "./Header";
-import { toast } from 'react-toastify'
 
-
-
+import Swal from "sweetalert2";
+import {
+  ArrowDownOnSquareIcon,
+  ArrowRightStartOnRectangleIcon,
+} from "@heroicons/react/24/solid";
 
 export default function CreateUser() {
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const createUser = usersStore((state) => state.createUser);
+  
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
   });
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     if (!formData.firstName.trim() || !formData.lastName.trim() || !formData.email.trim()) {
-      toast.error("Todos los campos son obligatorios");
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Todos los campos son obligatorios",
+        showConfirmButton: false,
+        timer: 1500,
+      });
       return;
     }
 
+
     try {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Usuario creado correctamente",
+        showConfirmButton: false,
+        timer: 1200,
+      });
+
       await createUser(formData);
       setFormData({ firstName: "", lastName: "", email: "" });
-      navigate('/')
-      toast.success('Usuario Registrado')
+      navigate("/");
     } catch (error) {
       console.error("Error al crear usuario:", error);
     }
   };
+
   return (
-
-    <div >
+    <div>
       <Header />
-      <div className="flex flex-col max-w-5xl mx-auto gap-4 mt-5">
-        <h2 className="font-extrabold text-3xl">Crear Nuevo <span className="text-blue-700">Usuario</span></h2>
 
+      <div className="max-w-3xl mx-auto mt-10 px-6">
         <form
           onSubmit={handleSubmit}
-          className="bg-white p-5 shadow-md"
-          action="">
-          <div className="">
-            <div className="mb-4">
-              <label
-                className="font-bold"
-                htmlFor="name">Nombre del Usuario:</label>
-              <input
-                className="w-full border-black p-3 bg-slate-200"
-                id="firstName"
-                name="firstName"
-                placeholder="Andres,Cristian,Carlos."
-                value={formData.firstName}
-                onChange={handleChange}
-                type="text" />
-            </div>
-            <div>
-              <label
-                className="font-bold"
-                htmlFor="apellido">Apellido del Usuario:</label>
-              <input
-                className="w-full border-black p-3 bg-slate-200 mb-4"
-                id="lastName"
-                name="lastName"
-                value={formData.lastName}
-                onChange={handleChange}
-                placeholder="Uribe,Paez,Rodriguez."
-                type="text" />
-            </div>
-            <div>
-              <label
-                className="font-bold"
-                htmlFor="correo">Correo del Usuario:</label>
-              <input
-                className="w-full border-black p-3 bg-slate-200 mb-4"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="inge@hotmail.com."
-                type="text" />
-            </div>
-          </div>
-
+          className="bg-gray-700 p-8 rounded-2xl shadow-lg space-y-6"
+        >
+          <h2 className="text-2xl font-bold text-center mb-8 text-white">
+            Crear <span className="text-emerald-400">Usuario</span>
+          </h2>
 
           <input
-            className="bg-blue-700 w-full p-3 text-white uppercase font-bold mt-3 hover:bg-blue-800"
-            type="submit"
-            value="Guardar Usuario"
+            id="firstName"
+            name="firstName"
+            type="text"
+            placeholder="Nombre Completo..."
+            value={formData.firstName}
+            onChange={handleChange}
+            className="w-full font-bold text-xl text-center p-3 rounded-xl bg-slate-100 border border-gray-300
+              focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:placeholder-transparent"
           />
+
+          <input
+            id="lastName"
+            name="lastName"
+            type="text"
+            placeholder="Apellido Completo..."
+            value={formData.lastName}
+            onChange={handleChange}
+            className="w-full font-bold text-xl text-center p-3 rounded-xl bg-slate-100 border border-gray-300
+              focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:placeholder-transparent"
+          />
+
+          <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="Correo Usuario..."
+            value={formData.email}
+            onChange={handleChange}
+            className="w-full font-bold text-xl text-center p-3 rounded-xl bg-slate-100 border border-gray-300
+              focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:placeholder-transparent"
+          />
+
+          <div className="flex flex-col sm:flex-row gap-4 mt-6">
+            <button
+              type="submit"
+              className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 rounded-2xl
+              flex-1 flex items-center justify-center gap-2 shadow-md transition duration-200"
+            >
+              <ArrowDownOnSquareIcon width={24} />
+              Guardar
+            </button>
+
+            <button
+              type="button"
+              onClick={() => navigate("/")}
+              className="bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 rounded-2xl
+              flex-1 flex items-center justify-center gap-2 shadow-md transition duration-200"
+            >
+              <ArrowRightStartOnRectangleIcon width={24} />
+              Cancelar
+            </button>
+          </div>
         </form>
       </div>
-      <footer className="bg-blue-700 text-center p-5 text-white font-bold mt-30">Jhonatan Camilo Uribe-2025</footer>
+
+      <footer className="bg-gray-800 text-center p-5 text-white font-bold mt-16">
+        <p className="text-sm">Grupo INGCO, 2025</p>
+        <p className="text-sm">Creado por Jhonatan Camilo Uribe</p>
+      </footer>
     </div>
-  )
+  );
 }
