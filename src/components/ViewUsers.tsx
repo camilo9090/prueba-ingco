@@ -89,14 +89,16 @@ export default function ViewUsers() {
       </div>
 
       <div className="">
-        <Pagination className="mt-10 mb-10  p-10 rounded-lg shadow-md "
+        <Pagination className="mt-5 mb-5  p-10 rounded-lg shadow-md "
           count={pageCount}
           page={page}
           onChange={handleChange} variant="outlined" shape="rounded" />
 
+           
+
       </div>
 
-      <Footer />
+     <Footer />
 
     </>
   );
