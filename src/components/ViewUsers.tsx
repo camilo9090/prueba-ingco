@@ -5,15 +5,21 @@ import { UserIcon } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
 import Header from "./Header";
 
+
+
 export default function ViewUsers() {
   const usuarios = usersStore((state) => state.listUser);
+  //fitra usuarios por el campo status(true)
   const usuariosFilters = useMemo(
     () => usuarios.filter((salida) => salida.status === true),
     [usuarios]
   );
+  //llama la funcion deleteUser
   const deleteUser = usersStore((state) => state.deleteUser);
+  //llama la funcion fetchUsers
   const fetchUsers = usersStore((state) => state.fetchUsers);
 
+  //llama la funcion fetchUsers al cargar el componente y cada que cambie la lista de usuarios
   useEffect(() => {
     fetchUsers();
   }, [fetchUsers]);
@@ -35,6 +41,9 @@ export default function ViewUsers() {
         </Link>
       </div>
       <div className="mt-10 mb-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto bg-gray-700 p-5 rounded-lg shadow-md">
+       
+       
+        {/* Mapeo de usuarios filtrados para mostrar en la interfaz */}
         {usuariosFilters.map((user) => (
           <div
             key={user.id}

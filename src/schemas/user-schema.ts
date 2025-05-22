@@ -2,7 +2,7 @@
 import { z } from 'zod'
 
 
-
+//Este esquema es para validar los datos de un usuario
 export const userSchema = z.object({  
     firstName: z.string(),
     lastName: z.string(),

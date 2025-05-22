@@ -9,17 +9,20 @@ import {
   ArrowRightStartOnRectangleIcon,
 } from "@heroicons/react/24/solid";
 
+
+// Componente para crear un nuevo usuario
 export default function CreateUser() {
   const navigate = useNavigate();
   const createUser = usersStore((state) => state.createUser);
-  
 
+  // Estado para almacenar los datos del formulario
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
   });
 
+  // Función para manejar el cambio en los campos del formulario
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
@@ -27,9 +30,11 @@ export default function CreateUser() {
     });
   };
 
+  // Función para manejar el envío del formulario
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    // Validación de campos vacíos
     if (!formData.firstName.trim() || !formData.lastName.trim() || !formData.email.trim()) {
       Swal.fire({
         position: "center",
@@ -50,7 +55,7 @@ export default function CreateUser() {
         showConfirmButton: false,
         timer: 1200,
       });
-
+      // Llama a la función createUser para crear el nuevo usuario
       await createUser(formData);
       setFormData({ firstName: "", lastName: "", email: "" });
       navigate("/");
@@ -58,7 +63,6 @@ export default function CreateUser() {
       console.error("Error al crear usuario:", error);
     }
   };
-
   return (
     <div>
       <Header />

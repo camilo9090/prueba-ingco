@@ -2,7 +2,7 @@
 
 export default function Header() {
     return (
-        <header className="bg-white shadow-neutral-200">
+        <header className="bg-gray-700 shadow-neutral-200 p-5">
             <div className="mx-auto p-3">
                 <div className="flex justify-between items-center">
                     <div>

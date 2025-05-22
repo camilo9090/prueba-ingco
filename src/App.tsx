@@ -16,8 +16,6 @@ function App() {
         <Routes>
           <Route path="/" element={<ViewUsers />} />
           <Route path="/CreateUSer" element={<CreateUser />} />
-
-
         </Routes>
       </BrowserRouter>
 

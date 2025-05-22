@@ -2,11 +2,17 @@ import { TrashIcon } from "@heroicons/react/24/solid";
 import Swal from "sweetalert2";
 import { user } from "../types";
 
+
+//type de las propiedades que recibe el componente
+//userId: id del usuario a eliminar
+//onDelete: funcion que se ejecuta al eliminar el usuario
 type ConfirmationDeleteProps = {
   userId: user["id"];
   onDelete: (id: user["id"]) => void;
 };
 
+// Componente de confirmación de eliminación
+// Recibe el id del usuario y la función onDelete como props
 export default function ConfirmationDelete({
   userId,
   onDelete,
