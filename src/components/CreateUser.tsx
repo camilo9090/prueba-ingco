@@ -8,6 +8,7 @@ import {
   ArrowDownOnSquareIcon,
   ArrowRightStartOnRectangleIcon,
 } from "@heroicons/react/24/solid";
+import Footer from "./Footer";
 
 
 // Componente para crear un nuevo usuario
@@ -64,7 +65,7 @@ export default function CreateUser() {
     }
   };
   return (
-    <div>
+    <>
       <Header />
 
       <div className="max-w-3xl mx-auto mt-10 px-6">
@@ -132,10 +133,9 @@ export default function CreateUser() {
         </form>
       </div>
 
-      <footer className="bg-gray-800 text-center p-5 text-white font-bold mt-16">
-        <p className="text-sm">Grupo INGCO, 2025</p>
-        <p className="text-sm">Creado por Jhonatan Camilo Uribe</p>
-      </footer>
-    </div>
+      <Footer />
+    </>
+  
   );
+
 }
