@@ -1,7 +1,7 @@
 
 import { create } from 'zustand'
 import { user } from './types';
-import { devtools } from 'zustand/middleware';
+
 import { getUsers } from './services/usersService';
 import axios from 'axios';
 
@@ -15,7 +15,7 @@ type UsersStore = {
 }
 
 
-export const usersStore = create<UsersStore>()(devtools((set) => ({
+export const usersStore = create<UsersStore>()((set) => ({
 
     listUser: [],
     fetchUsers: async () => {
@@ -23,8 +23,7 @@ export const usersStore = create<UsersStore>()(devtools((set) => ({
         set(state => ({
             listUser: JSON.stringify(state.listUser) !== JSON.stringify(listUser) ? listUser : state.listUser
         }));
-    }
-,    
+    },    
     deleteUser: async (id) => {
         const url = `https://api.fake-rest.refine.dev/users/${id}`
         await axios.delete(url)
@@ -35,7 +34,7 @@ export const usersStore = create<UsersStore>()(devtools((set) => ({
 
     },
 
-    createUser: async (newUser:user) => {
+    createUser: async (newUser) => {
 
         const url = 'https://api.fake-rest.refine.dev/users/'
         const response = await axios.post(url,newUser)
@@ -46,4 +45,4 @@ export const usersStore = create<UsersStore>()(devtools((set) => ({
 
     }
 
-})))
+}))
