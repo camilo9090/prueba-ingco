@@ -8,6 +8,7 @@ import Header from "./Header";
 
 
 export default function ViewUsers() {
+  //llama la funcion listUser
   const usuarios = usersStore((state) => state.listUser);
   //fitra usuarios por el campo status(true)
   const usuariosFilters = useMemo(
